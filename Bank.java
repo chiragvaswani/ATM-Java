@@ -9,4 +9,11 @@ public class Bank {
         B = new ArrayList<>();
     }
 
+    public void addBankA(Account account) {
+        A.add(account);
+    }
+
+    public void addBankB(Account account) {
+        B.add(account);
+    }
 }
