@@ -24,4 +24,16 @@ public class Account extends Bank {
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getExpDate() {
+        return exp;
+    }
+
+    public String getPassword() {
+        return pass;
+    }
+
 }
