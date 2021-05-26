@@ -32,7 +32,7 @@ public class Bank {
         for (Account acc : A) {
             if (card == acc.getCardNum()) {
                 cardExists = true;
-                if (card == acc.getCardNum() && cardExp(acc.getExp())) {
+                if (cardExp(acc.getExp())) {
                     System.out.println("Card authorised.");
                     isValid = true;
                     break;
@@ -45,6 +45,28 @@ public class Bank {
         if (cardExists == false)
             System.out.println("Card does not exist");
         ;
+        System.out.println(cardExists && isValid);
+        return (cardExists && isValid);
+    }
+
+    // Can use the same function for both banks by accpeting the bank as an argument
+    public boolean authoriseATMB(int card) {
+        boolean cardExists = false;
+        boolean isValid = false;
+        for (Account acc : B) {
+            if (card == acc.getCardNum()) {
+                cardExists = true;
+                if (cardExp(acc.getExpDate())) {
+                    System.out.println("Card authorised.");
+                    isValid = true;
+                    break;
+                }
+                if (isValid == false)
+                    System.out.println("Card expired.");
+            }
+        }
+        if (isValid == false)
+            System.out.println("Card does not exist.");
         System.out.println(cardExists && isValid);
         return (cardExists && isValid);
     }
