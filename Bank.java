@@ -90,4 +90,14 @@ public class Bank {
         return isMatch;
     }
 
+    public boolean authoriseCardB(String passcode) {
+        boolean isMatch = false;
+        for (Account acc : B) {
+            if (passcode.compareTo(acc.getPassword()) > 0) {
+                isMatch = true;
+                break;
+            }
+        }
+        return isMatch;
+    }
 }
