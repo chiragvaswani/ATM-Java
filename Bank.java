@@ -100,4 +100,41 @@ public class Bank {
         }
         return isMatch;
     }
+
+    public double withdrawA(String passcode, double amount) {
+        double resBalance = 0;
+        for (Account acc : A) {
+            if (passcode.compareTo(acc.getPassword()) > 0) {
+                if (amount <= acc.getBalance()) {
+                    System.out.println(acc.getBalance());
+                    resBalance = acc.getBalance() - amount;
+                    acc.setBalance(resBalance);
+                    System.out.println("Remaining balance: ");
+                    System.out.println(resBalance);
+                    return resBalance;
+                } else
+                    System.out.println("Withdrawal amount too high.");
+            }
+        }
+        return resBalance;
+    }
+
+    public double withdrawB(String passcode, double amount) {
+        double resBalance = 0;
+        for (Account acc : B) {
+            if (passcode.compareTo(acc.getPassword()) > 0) {
+                if (amount <= acc.getBalance()) {
+                    System.out.println(acc.getBalance());
+                    resBalance = acc.getBalance() - amount;
+                    acc.setBalance(resBalance);
+                    System.out.println("Remaining balance: ");
+                    System.out.println(resBalance);
+                    return resBalance;
+                } else
+                    System.out.println("Withdrawal amount too high.");
+            }
+        }
+        return resBalance;
+    }
+
 }
