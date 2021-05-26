@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Bank {
@@ -32,7 +33,7 @@ public class Bank {
         for (Account acc : A) {
             if (card == acc.getCardNum()) {
                 cardExists = true;
-                if (cardExp(acc.getExp())) {
+                if (cardExp(acc.getExpDate())) {
                     System.out.println("Card authorised.");
                     isValid = true;
                     break;
@@ -69,5 +70,12 @@ public class Bank {
             System.out.println("Card does not exist.");
         System.out.println(cardExists && isValid);
         return (cardExists && isValid);
+    }
+
+    public static boolean cardExp(String month) {
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        String today = date.format(new Date());
+        return (month.compareTo(today) > 0);
+
     }
 }
