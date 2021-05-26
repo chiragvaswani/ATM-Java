@@ -25,4 +25,27 @@ public class Bank {
         for (Account account : B)
             System.out.println(account.toString());
     }
+
+    public boolean authoriseATMA(int card) {
+        boolean cardExists = false;
+        boolean isValid = false;
+        for (Account acc : A) {
+            if (card == acc.getCardNum()) {
+                cardExists = true;
+                if (card == acc.getCardNum() && cardExp(acc.getExp())) {
+                    System.out.println("Card authorised.");
+                    isValid = true;
+                    break;
+                }
+                if (isValid == false) {
+                    System.out.println("Card is expired");
+                }
+            }
+        }
+        if (cardExists == false)
+            System.out.println("Card does not exist");
+        ;
+        System.out.println(cardExists && isValid);
+        return (cardExists && isValid);
+    }
 }
