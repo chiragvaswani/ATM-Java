@@ -72,6 +72,22 @@ public class Bank {
         return (cardExists && isValid);
     }
 
+    public Account getAccountA(int card) {
+        Account acc = null;
+        for (Account account : A)
+            if (account.getCardNum() == card)
+                return account;
+        return acc;
+    }
+
+    public Account getAccountB(int card) {
+        Account acc = null;
+        for (Account account : B)
+            if (account.getCardNum() == card)
+                return account;
+        return acc;
+    }
+
     public static boolean cardExp(String month) {
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         String today = date.format(new Date());
