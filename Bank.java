@@ -78,4 +78,16 @@ public class Bank {
         return (month.compareTo(today) > 0);
 
     }
+
+    public boolean authoriseCardA(String passcode) {
+        boolean isMatch = false;
+        for (Account acc : A) {
+            if (passcode.compareTo(acc.getPassword()) > 0) {
+                isMatch = true;
+                break;
+            }
+        }
+        return isMatch;
+    }
+
 }
