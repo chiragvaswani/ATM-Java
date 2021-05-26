@@ -32,6 +32,10 @@ public class Account extends Bank {
         return exp;
     }
 
+    public int getCardNum() {
+        return card;
+    }
+
     public String getPassword() {
         return pass;
     }
@@ -42,5 +46,10 @@ public class Account extends Bank {
 
     public double getBalance() {
         return balance;
+    }
+
+    public String toString() {
+        return String.format("Customer: Name: %s\nCard: %s\nExpiration Date: %s\nPassword: %s", getName(), getCardNum(),
+                getExpDate(), getPassword());
     }
 }
