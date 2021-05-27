@@ -134,11 +134,17 @@ public class Bank {
             System.out.println("Remaining balance: " + acc.getBalance()); // This could be asynchronous hence using the
                                                                           // getter method instead of the resBalance
                                                                           // variable
-            System.out.println(acc.getBalance()); // --- " ----
-            return resBalance;
+            return acc.getBalance();
         } else
             System.out.println("Withdrawal amount too high.");
         return resBalance;
+    }
+
+    public double depositAmount(Account acc, double amount) {
+        System.out.println(acc.getBalance());
+        acc.setBalance(acc.getBalance() + amount);
+        System.out.println("Updated balance: " + acc.getBalance());
+        return acc.getBalance();
     }
 
 }
