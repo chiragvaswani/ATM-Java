@@ -50,7 +50,7 @@ public class Main {
 
     public static Account validateCard(String choice, Bank bank) {
         Account acc = null;
-        if (choice.equals("A1")) {
+        if (choice.equals("A1") || choice.equals("A2")) {
             // Get the valid card number
             acc = checkCardA(bank);
             String password;
