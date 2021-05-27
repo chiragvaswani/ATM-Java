@@ -3,11 +3,11 @@ import java.util.*;
 public class Main {
     static Scanner sc = new Scanner(System.in);
 
-    public static void main() {
+    public static void main(String[] args) {
         Bank bank = new Bank();
-        Account a1 = new Account("Yehia", 40, 22, "2017-08-16", "1422");
+        Account a1 = new Account("Yehia", 40, 22, "2021-08-16", "1422");
         Account a2 = new Account("Moe", 40, 11, "2011-08-16", "1322");
-        Account b1 = new Account("Yehia", 40, 23, "2017-08-16", "5522");
+        Account b1 = new Account("Yehia", 40, 23, "2021-08-16", "5522");
         Account b2 = new Account("Johnny", 40, 21, "2020-08-16", "1412");
         Account b3 = new Account("Yehia", 40, 31, "2014-08-16", "1722");
         bank.addBankA(a1);
@@ -23,25 +23,88 @@ public class Main {
 
     public static void executeChoice(String choice, Bank bank) {
         if (choice.equals("A1") || choice.equals("B1")) {
-            validateAndWithdraw(choice, bank);
+            Account acc = validateCard(choice, bank);
+            if (acc != null) {
+                System.out.println("Well now you're validated!");
+                System.out.println("Enter amount: ");
+
+            } else {
+                System.out.println("Error in processing the card. Please ensure your credentials are correct.");
+            }
         } else {
             System.out.println("Invalid choice. Please try again.");
         }
     }
 
-    public static void validateAndWithdraw(String choice, Bank bank) {
+    public static Account validateCard(String choice, Bank bank) {
+        Account acc = null;
         if (choice.equals("A1")) {
             // Get the valid card number
-            boolean valid;
+            acc = checkCardA(bank);
+            String password;
+            System.out.println(acc.toString());
+            boolean pValid = false;
             do {
-                System.out.println("Enter card number: ");
-                int card = sc.nextInt();
-                valid = bank.authoriseATMA(card);
-                if (!valid)
-                    System.out.println("Please try again.");
-            } while (!valid);
+                System.out.println("Enter password");
+                password = sc.next();
+                if (bank.checkPasswordA(acc, password)) {
+                    pValid = true;
+                    break;
+                } else {
+                    System.out.println("Wrong password, try again");
+                }
+            } while (pValid == false);
+            // Now, the card is validated.
         } else {
-
+            acc = checkCardB(bank);
+            String password;
+            System.out.println(acc.toString());
+            boolean pValid = false;
+            do {
+                System.out.println("Enter password");
+                password = sc.next();
+                if (bank.checkPasswordB(acc, password)) {
+                    pValid = true;
+                    break;
+                } else {
+                    System.out.println("Wrong password, try again");
+                }
+            } while (pValid == false);
         }
+        // Here, the card will be validated if it exists.
+        return acc;
     }
+
+    public static Account checkCardA(Bank bank) {
+        boolean valid;
+        Account acc = null;
+        do {
+            System.out.println("Enter card number: ");
+            int card = sc.nextInt();
+            valid = bank.authoriseATMA(card);
+            if (!valid)
+                System.out.println("Please try again.");
+            else
+                acc = bank.getAccountA(card);
+        } while (!valid);
+        System.out.println("Card found.");
+        return acc;
+    }
+
+    public static Account checkCardB(Bank bank) {
+        boolean valid;
+        Account acc = null;
+        do {
+            System.out.println("Enter card number: ");
+            int card = sc.nextInt();
+            valid = bank.authoriseATMB(card);
+            if (!valid)
+                System.out.println("Please try again.");
+            else
+                acc = bank.getAccountA(card);
+        } while (!valid);
+        System.out.println("Card found.");
+        return acc;
+    }
+
 }
