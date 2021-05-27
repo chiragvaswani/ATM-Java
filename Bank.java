@@ -88,6 +88,14 @@ public class Bank {
         return acc;
     }
 
+    public boolean checkPasswordA(Account acc, String passcode) {
+        return acc.getPassword().equals(passcode);
+    }
+
+    public boolean checkPasswordB(Account acc, String passcode) {
+        return acc.getPassword().equals(passcode);
+    }
+
     public static boolean cardExp(String month) {
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         String today = date.format(new Date());
@@ -135,7 +143,7 @@ public class Bank {
         return resBalance;
     }
 
-    public double withdrawB(String passcode, double amount) {
+    public double withdrawB(Account passcode, double amount) {
         double resBalance = 0;
         for (Account acc : B) {
             if (passcode.compareTo(acc.getPassword()) > 0) {
