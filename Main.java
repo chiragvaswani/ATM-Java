@@ -47,6 +47,11 @@ public class Main {
             } else {
                 System.out.println("Error in processing the card. Please ensure your credentials are correct.");
             }
+        } else if (choice.equals("A3") || choice.equals("B3")) {
+            Account acc = validateCard(choice, bank);
+            if (acc != null) {
+                System.out.println("Current Balance: " + acc.getBalance());
+            }
         } else {
             System.out.println("Invalid choice. Please try again.");
         }
@@ -55,7 +60,7 @@ public class Main {
 
     public static Account validateCard(String choice, Bank bank) {
         Account acc = null;
-        if (choice.equals("A1") || choice.equals("A2")) {
+        if (choice.equals("A1") || choice.equals("A2") || choice.equals("A3")) {
             // Get the valid card number
             acc = checkCardA(bank);
             String password;
