@@ -125,39 +125,19 @@ public class Bank {
         return isMatch;
     }
 
-    public double withdrawA(String passcode, double amount) {
+    public double withdrawAmount(Account acc, double amount) {
         double resBalance = 0;
-        for (Account acc : A) {
-            if (passcode.compareTo(acc.getPassword()) > 0) {
-                if (amount <= acc.getBalance()) {
-                    System.out.println(acc.getBalance());
-                    resBalance = acc.getBalance() - amount;
-                    acc.setBalance(resBalance);
-                    System.out.println("Remaining balance: ");
-                    System.out.println(resBalance);
-                    return resBalance;
-                } else
-                    System.out.println("Withdrawal amount too high.");
-            }
-        }
-        return resBalance;
-    }
-
-    public double withdrawB(Account passcode, double amount) {
-        double resBalance = 0;
-        for (Account acc : B) {
-            if (passcode.compareTo(acc.getPassword()) > 0) {
-                if (amount <= acc.getBalance()) {
-                    System.out.println(acc.getBalance());
-                    resBalance = acc.getBalance() - amount;
-                    acc.setBalance(resBalance);
-                    System.out.println("Remaining balance: ");
-                    System.out.println(resBalance);
-                    return resBalance;
-                } else
-                    System.out.println("Withdrawal amount too high.");
-            }
-        }
+        if (amount <= acc.getBalance()) {
+            System.out.println(acc.getBalance());
+            resBalance = acc.getBalance() - amount;
+            acc.setBalance(resBalance);
+            System.out.println("Remaining balance: " + acc.getBalance()); // This could be asynchronous hence using the
+                                                                          // getter method instead of the resBalance
+                                                                          // variable
+            System.out.println(acc.getBalance()); // --- " ----
+            return resBalance;
+        } else
+            System.out.println("Withdrawal amount too high.");
         return resBalance;
     }
 
