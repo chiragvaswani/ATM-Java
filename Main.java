@@ -16,6 +16,10 @@ public class Main {
         bank.addBankB(b2);
         bank.addBankB(b3);
         bank.showAccounts();
+        showMenu(bank);
+    }
+
+    public static void showMenu(Bank bank) {
         System.out.println(
                 "\tATM System\nPlease enter your choice: \n\tBank A\nA1.Withdraw\nA2.Deposit\n\tBank B\nB1.Withdraw\nB2.Deposit");
         String choice = sc.nextLine();
@@ -46,6 +50,7 @@ public class Main {
         } else {
             System.out.println("Invalid choice. Please try again.");
         }
+        showMenu(bank);
     }
 
     public static Account validateCard(String choice, Bank bank) {
