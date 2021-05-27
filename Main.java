@@ -27,7 +27,18 @@ public class Main {
             if (acc != null) {
                 System.out.println("Well now you're validated!");
                 System.out.println("Enter amount: ");
+                double amount = sc.nextDouble();
+                bank.withdrawAmount(acc, amount);
 
+            } else {
+                System.out.println("Error in processing the card. Please ensure your credentials are correct.");
+            }
+        } else if (choice.equals("A2") || choice.equals("B2")) {
+            Account acc = validateCard(choice, bank);
+            if (acc != null) {
+                System.out.println("Enter the amount: ");
+                double amount = sc.nextDouble();
+                bank.depositAmount(acc, amount);
             } else {
                 System.out.println("Error in processing the card. Please ensure your credentials are correct.");
             }
