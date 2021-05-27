@@ -20,11 +20,19 @@ public class Bank {
 
     public void showAccounts() {
         System.out.println("Accounts in Bank A: ");
-        for (Account account : A)
+        System.out.println();
+        for (Account account : A) {
             System.out.println(account.toString());
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println();
         System.out.println("Accounts in Bank B: ");
-        for (Account account : B)
+        System.out.println();
+        for (Account account : B) {
             System.out.println(account.toString());
+            System.out.println();
+        }
     }
 
     public boolean authoriseATMA(int card) {
@@ -34,7 +42,7 @@ public class Bank {
             if (card == acc.getCardNum()) {
                 cardExists = true;
                 if (cardExp(acc.getExpDate())) {
-                    System.out.println("Card authorised.");
+                    // System.out.println("Card authorised.");
                     isValid = true;
                     break;
                 }
@@ -45,8 +53,7 @@ public class Bank {
         }
         if (cardExists == false)
             System.out.println("Card does not exist");
-        ;
-        System.out.println(cardExists && isValid);
+
         return (cardExists && isValid);
     }
 
@@ -58,7 +65,7 @@ public class Bank {
             if (card == acc.getCardNum()) {
                 cardExists = true;
                 if (cardExp(acc.getExpDate())) {
-                    System.out.println("Card authorised.");
+                    // System.out.println("Card authorised.");
                     isValid = true;
                     break;
                 }
@@ -68,7 +75,6 @@ public class Bank {
         }
         if (isValid == false)
             System.out.println("Card does not exist.");
-        System.out.println(cardExists && isValid);
         return (cardExists && isValid);
     }
 
