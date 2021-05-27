@@ -21,7 +21,7 @@ public class Main {
 
     public static void showMenu(Bank bank) {
         System.out.println(
-                "\tATM System\nPlease enter your choice: \n\tBank A\nA1.Withdraw\nA2.Deposit\n\tBank B\nB1.Withdraw\nB2.Deposit");
+                "\tATM System\nPlease enter your choice: \n\tBank A\nA1.Withdraw\nA2.Deposit\nA3.View Balance\n\tBank B\nB1.Withdraw\nB2.Deposit\nB3.View Balance");
         String choice = sc.nextLine();
         executeChoice(choice, bank);
     }
